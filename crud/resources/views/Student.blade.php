@@ -29,6 +29,8 @@
                             <td>Age</td>
                             <td>Email</td>
                             <td>Number</td>
+                            <td>Address</td>
+
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -44,6 +46,7 @@
                             <td>{{$stu->age}}</td>
                             <td>{{$stu->email}}</td>
                             <td>{{$stu->phone}}</td>
+                            <td>{{$stu->address}}</td>
                             <td><a href={{url('edit-student/'.$stu->id)}} class="btn btn-info">edit</a>
                                 |<a href={{url('delete-student/'.$stu->id)}} class="btn btn-danger">delete</a></td>
                         </tr>

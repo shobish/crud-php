@@ -61,6 +61,15 @@
                     <div class="alert alert-danger">{{$message}}</div>
 
                     @enderror
+                    <div class="mb-3">
+                        <label name="Address" class="form-label">address</label>
+                        <input type="text" name="address" class="form-control" id="phone" placeholder="Enter your address" value={{$data->address}}>
+                    </div>
+                    @error('address')
+                    <div class="alert alert-danger">{{$message}}</div>
+
+                    @enderror
+
 
                     <button type="submit" class="btn btn-success">submit</button>
                     <a href={{url('student-list')}} class="btn btn-danger">back</a>

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
     public function list()
     {
         $data = student::all();
-        return view('Student', compact('data'));
+        return view('Student', ['data' => $data]);
     }
     public function addstudent()
     {
@@ -24,7 +25,8 @@ class StudentController extends Controller
             'email' => 'required|email',
             'age' => 'required',
             'class' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'address' => 'required'
         ]);
 
         $name = $req->name;
@@ -32,6 +34,7 @@ class StudentController extends Controller
         $age = $req->age;
         $class = $req->class;
         $phone = $req->phone;
+        $address = $req->address;
 
         $student = new Student();
         $student->name = $name;
@@ -39,6 +42,7 @@ class StudentController extends Controller
         $student->age = $age;
         $student->class = $class;
         $student->phone = $phone;
+        $student->address = $address;
         $student->save();
         return redirect()->back()->with('success', 'added successfully');
     }
@@ -56,7 +60,8 @@ class StudentController extends Controller
             'email' => 'required|email',
             'age' => 'required',
             'class' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'address' => 'required'
         ]);
 
         $id = $req->id;
@@ -65,19 +70,23 @@ class StudentController extends Controller
         $age = $req->age;
         $class = $req->class;
         $phone = $req->phone;
+        $address = $req->address;
 
         Student::where('id', "=", "$id")->update([
             'name' => $name,
             'email' => $email,
             'age' => $age,
             'class' => $class,
-            'phone' => $phone
+            'phone' => $phone,
+            'address' => $address
         ]);
         return redirect()->back()->with('success', 'student updated successfully');
     }
-    public function deletestudent($id)
+    public function deletestudent($studentid)
     {
-        Student::where('id', "=", "$id")->delete();
+
+        Student::where('id', $studentid)->delete();
+
         return redirect()->back()->with('success', 'student deleted successfully');
     }
 }

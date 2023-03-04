@@ -13,11 +13,11 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('AddStudent');
+// });
 
-Route::get('student-list', [StudentController::class, 'list']);
+Route::get('/', [StudentController::class, 'list']);
 Route::get('add-student', [StudentController::class, 'addstudent']);
 Route::post('save-student', [StudentController::class, 'savestudent']);
 Route::get('edit-student/{id}', [StudentController::class, 'editstudent']);
