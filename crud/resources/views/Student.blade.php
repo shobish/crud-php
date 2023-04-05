@@ -18,7 +18,7 @@
                     <a href={{url('add-student')}} class="btn btn-primary">Add Student</a>
                 </div>
                 @if(Session::has('success'))
-                <div class="alert alert-success">{{Session::get('success')}}</div>
+                <div class="alert alert-danger">{{Session::get('success')}}</div>
                 @endif
                 <table class=" table">
                     <thead>
